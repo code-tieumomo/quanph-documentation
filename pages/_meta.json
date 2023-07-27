@@ -1,0 +1,19 @@
+{
+  "index": {
+    "title": "Trang chủ",
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "layout": "default"
+    }
+  },
+  "docs": {
+    "title": "Tài liệu",
+    "type": "page"
+  },
+  "posts": {
+    "title": "Bài viết",
+    "type": "page",
+    "display": "hidden"
+  }
+}

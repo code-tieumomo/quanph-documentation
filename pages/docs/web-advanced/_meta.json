@@ -1,0 +1,11 @@
+{
+  "git": "Git",
+  "responsive": "Responsive",
+  "array": "Array",
+  "object": "Object",
+  "loop": "Loop",
+  "local-storage": "Local Storage",
+  "render-html-in-js": "Render HTML in JS",
+  "api": "API",
+  "snippet": "Snippet"
+}
