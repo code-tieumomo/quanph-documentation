@@ -1,5 +1,12 @@
+import { space_grotesk, source_code_pro } from "./../fonts.ts";
 import "./../style.scss";
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <main
+      className={`${space_grotesk.variable} ${source_code_pro.variable} font-sans`}
+    >
+      <Component {...pageProps} />
+    </main>
+  );
 }

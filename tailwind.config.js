@@ -12,7 +12,12 @@ module.exports = {
     "./theme.config.tsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-space-grotesk)"],
+        mono: ["var(--font-source-code-pro)"],
+      },
+    },
   },
   plugins: [],
 };
