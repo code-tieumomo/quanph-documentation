@@ -14,7 +14,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-space-grotesk)"],
+        sans: ["var(--font-inter)"],
+        heading: ["var(--font-space-grotesk)"],
         mono: ["var(--font-source-code-pro)"],
       },
     },

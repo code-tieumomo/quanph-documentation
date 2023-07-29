@@ -3,22 +3,23 @@
 @tailwind components;
 @tailwind utilities;
 
-// * {
-//   font-family: "Inter"
-// }
+* {
+  @apply font-sans;
+}
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   font-family: var(--font-space-grotesk) sans-serif;
-// }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+aside * {
+  @apply font-heading;
+}
 
 pre * {
   @apply font-mono;
-  font-size: 0.825rem;
+  font-size: 0.875rem;
 }
 
 code {
