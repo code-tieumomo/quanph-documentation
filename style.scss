@@ -39,12 +39,22 @@ a:focus-visible {
   @apply mx-auto;
 }
 
-.nx-text-primary-600 {
-  @apply text-emerald-600;
+.nx-text-primary {
+  &-600 {
+    @apply text-emerald-600;
+
+    &:hover {
+      @apply text-emerald-700 #{!important};
+    }
+  }
+
+  &-800 {
+    @apply text-emerald-800;
+  }
 }
 
-.nx-text-primary-800 {
-  @apply text-emerald-800;
+.hover\:nx-text-primary-600:hover {
+  @apply text-emerald-600;
 }
 
 .nx-bg-primary-100 {

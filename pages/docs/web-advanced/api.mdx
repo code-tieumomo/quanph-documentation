@@ -5,6 +5,8 @@ toc_max_heading_level: 6
 sidebar_position: 8
 ---
 
+import { Callout } from "nextra/components";
+
 # API
 
 > **API (Application Programming Interface)** là một tập các hàm, giao diện, tài liệu mà một hệ thống cung cấp cho các hệ thống khác để sử dụng. API giúp các hệ thống khác có thể tương tác với nhau một cách dễ dàng.
@@ -219,6 +221,6 @@ Access to fetch at 'https://example.com/api/users' from origin 'https://example.
 
 `fetch()` là một hàm bất đồng bộ (asynchronous). Điều này có nghĩa là khi ta gọi hàm `fetch()` thì nó sẽ không chờ đợi cho đến khi nhận được response từ Web API mà nó sẽ tiếp tục thực hiện các câu lệnh tiếp theo. Khi nhận được response từ Web API thì nó sẽ thực hiện các câu lệnh trong hàm `then()`. Các khái niệm về bất đồng bộ và async/await sẽ được giải thích ở các bài học sau.
 
-:::danger
-Do đó mọi thao tác với dữ liệu nhận được từ Web API đều phải được thực hiện trong hàm `then()` thứ hai.
-:::
+<Callout emoji="" type="error">
+  Do đó mọi thao tác với dữ liệu phải được thực hiện trong hàm `then()` thứ hai.
+</Callout>

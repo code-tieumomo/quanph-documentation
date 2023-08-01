@@ -13,7 +13,6 @@
   },
   "posts": {
     "title": "Bài viết",
-    "type": "page",
-    "display": "hidden"
+    "type": "page"
   }
 }
