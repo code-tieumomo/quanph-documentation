@@ -4,15 +4,11 @@
     "type": "page",
     "display": "hidden",
     "theme": {
-      "layout": "default"
+      "layout": "full"
     }
   },
   "docs": {
     "title": "Tài liệu",
-    "type": "page"
-  },
-  "posts": {
-    "title": "Bài viết",
     "type": "page"
   }
 }

@@ -5,21 +5,23 @@ toc_max_heading_level: 6
 sidebar_position: 7
 ---
 
+import { Callout } from "nextra/components";
+
 # Render HTML trong JavaScript
 
 > Các ứng dụng web hiện đại thường sử dụng JavaScript để tạo ra các thành phần HTML động. Ví dụ, khi bạn click vào một nút, một element HTML mới sẽ được tạo ra và được thêm vào trang web. Hoặc phổ biến nhất là một danh sách các element HTML được tạo ra từ dữ liệu được lấy từ server. Việc render HTML sẽ giúp đơn giản hóa việc tạo ra các thành phần HTML động, không cần phải viết HTML thủ công quá nhiều và dữ liệu được render sẽ được cập nhật tự động khi có thay đổi.
 
-:::info
+<Callout type="info">
 **Render**: Có thể hiểu đơn giản là tạo ra một HTML element từ dữ liệu bằng Javascript.
-:::
+</Callout>
 
 ## Cách render HTML trong JavaScript
 
 Có nhiều cách để render HTML trong JavaScript. Trong bài viết này, chúng ta sẽ tìm hiểu về 2 cách phổ biến nhất là sử dụng `innerHTML` và `insertAdjacentHTML`.
 
-:::info
+<Callout type="info">
 Ngoài 2 cách trên, còn có một cách khác là sử dụng `document.createElement` và `appendChild`. Tuy nhiên, cách này sẽ phức tạp hơn và khó áp dụng hơn do chỉ có thể render một element HTML duy nhất mỗi lần, thay vào đó render một chuỗi HTML chứa nhiều element HTML một lúc sẽ đơn giản hơn. Cách này tương tự với các hàm `h()` trong Vue hoặc `JSX` trong React, ... mà chúng ta sẽ tìm hiểu trong các bài viết sau.
-:::
+</Callout>
 
 ### Sử dụng `innerHTML`
 

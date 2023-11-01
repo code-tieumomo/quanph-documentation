@@ -16,22 +16,22 @@ const config: DocsThemeConfig = {
     const { asPath } = useRouter();
     if (asPath !== "/") {
       return {
-        titleTemplate: "%s – ...",
+        titleTemplate: "%s – ..."
       };
     }
   },
   logo,
   project: {
-    link: "https://github.com/shuding/nextra-docs-template",
+    link: "https://github.com/shuding/nextra-docs-template"
   },
   // docsRepositoryBase: "https://github.com/shuding/nextra-docs-template",
   // banner: {
   //   key: "2.0-release",
   //   text: (
   //     <a href="#" target="_blank" rel="noreferrer">
-  //       🎉 Migrated from Docusaurus to Nextra. Read more →
+  //       🎉 Migrated from Docusaurus to Nextra.
   //     </a>
-  //   ),
+  //   )
   // },
   head: function useHead() {
     const { frontMatter } = useConfig();
@@ -64,27 +64,31 @@ const config: DocsThemeConfig = {
       return <>{title}</>;
     },
     defaultMenuCollapseLevel: 2,
-    toggleButton: true,
+    toggleButton: true
   },
   footer: {
     text: (
-      <div className="flex w-full flex-col items-center sm:items-start">
-        <div>
-          <div className="flex items-center gap-1 text-current">
-            <span>Powered by</span>
+      <div className="text-gray-600 body-font">
+        <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+          <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <Image src={Logo} alt="Logo" width={32} height={32}></Image>
+            <span className="ml-3 text-xl">...</span>
+          </a>
+          <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+            © 2023 ... —
             <a
               href="https://github.com/code-tieumomo"
-              target="_blank"
+              className="text-gray-600 ml-1"
               rel="noopener noreferrer"
+              target="_blank"
             >
-              Quanph
+              @quanph
             </a>
-          </div>
+          </p>
         </div>
-        <p className="mt-6 text-xs">© {new Date().getFullYear()} quanph.</p>
       </div>
-    ),
-  },
+    )
+  }
 };
 
 export default config;

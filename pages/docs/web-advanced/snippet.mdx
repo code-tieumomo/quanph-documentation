@@ -5,11 +5,13 @@ toc_max_heading_level: 6
 sidebar_position: 9
 ---
 
+import { Callout } from "nextra/components";
+
 # Code Snippet
 
-:::caution
+<Callout type="warning">
 Các ví dụ trong bài có thể chỉ có **HTML**, đôi khi là cả **TailwindCSS**, không có sẵn style và tùy từng snippet mà sẽ có thêm các thư viện hỗ trợ (sẽ được lưu ý).
-:::
+</Callout>
 
 ## Đăng nhập/Đăng ký
 
@@ -138,9 +140,9 @@ if (!isLogin) {
 }
 ```
 
-:::tip
+<Callout type="info">
 Phần này nên được đặt trong 1 file riêng và thêm vào các trang cần kiểm tra đăng nhập thông qua thẻ `<script src="..."></script>`.
-:::
+</Callout>
 
 ### Lưu ý
 
@@ -174,6 +176,6 @@ if (!isLogin) {
 
 ## API + Render HTML
 
-:::danger
+<Callout type="error">
 Chưa hoàn thiện 🚧
-:::
+</Callout>

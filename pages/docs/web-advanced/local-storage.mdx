@@ -5,6 +5,8 @@ toc_max_heading_level: 6
 sidebar_position: 6
 ---
 
+import { Callout } from "nextra/components";
+
 # Local Storage
 
 > **Local Storage** là một cơ chế lưu trữ dữ liệu trên trình duyệt. Nó cho phép lưu trữ dữ liệu dưới dạng các key-value, và dữ liệu này sẽ được lưu trữ trên trình duyệt của người dùng ngay cả khi họ tắt trình duyệt đi và mở lại.
@@ -13,9 +15,9 @@ Local Storage có thể được xem trực tiếp thông qua DevTools của tr�
 
 ![Local Storage](./img/local-storage-in-devtools.png)
 
-:::caution
+<Callout type="warning">
 Local Storage lưu dữ liệu theo domain (tên miền) của trang web. Ví dụ, nếu bạn lưu trữ dữ liệu vào Local Storage của trang `https://example.com`, thì dữ liệu đó sẽ chỉ có thể được truy cập từ trang `https://example.com` và không thể được truy cập từ trang `https://example.org`.
-:::
+</Callout>
 
 ## Key - Value
 

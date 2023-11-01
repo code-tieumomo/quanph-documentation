@@ -5,6 +5,8 @@ toc_max_heading_level: 6
 sidebar_position: 2
 ---
 
+import { Callout } from "nextra/components";
+
 # Responsive
 
 ## Responsive là gì?
@@ -15,9 +17,9 @@ Responsive là một khái niệm trong thiết kế web, nó có nghĩa là thi
 
 ## Media Queries
 
-:::danger
+<Callout type="error">
 **Media Queries không thể viết được trong inline styles**
-:::
+</Callout>
 
 Trước khi bắt đầu, đừng quên set meta viewport cho trang HTML (thông thường khi sử dụng Emmet `"!"` trong VSCode thì nó sẽ tự động thêm vào cho mình rồi, nếu không có thì cần tự thêm vào).
 
@@ -35,9 +37,9 @@ Trước khi bắt đầu, đừng quên set meta viewport cho trang HTML (thôn
 </html>
 ```
 
-:::tip
+<Callout type="info">
 Tham khảo thêm tại [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries)
-:::
+</Callout>
 
 ### Cú pháp
 
@@ -249,25 +251,25 @@ Bằng cách sử dụng những layout như grid, flex ta có thể responsive 
 
 Trong flexbox, sử dụng linh hoạt `flex-shrink`, `flex-basis` và `flex-grow` để thay đổi kích thước của các phần tử con một cách hợp lý để tạo được layout responsive.
 
-:::tip
+<Callout type="info">
 Tham khảo thêm tại [Flexbox: Flexible sizing of flex items](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox#flexible_sizing_of_flex_items)
-:::
+</Callout>
 
 ### Grid
 
 Grid là một cách để tạo layout cho trang web bằng cách chia trang thành các cột và hàng. Sử dụng đơn vị `fr` một cách hp lý để chia tỉ lệ cho các cột và hàng.
 
-:::tip
+<Callout type="info">
 Tham khảo thêm tại [Flexible grids with the fr unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#flexible_grids_with_the_fr_unit)
-:::
+</Callout>
 
 ### Multi-column Layout
 
 Multi-column Layout là một cách để tạo layout cho trang web bằng cách chia trang thành nhiều cột. Multi-column Layout có thể được sử dụng để tạo layout cho trang web mà không cần đến grid hay flex.
 
-:::tip
+<Callout type="info">
 Tham khảo thêm tại [Using multi-column layouts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts)
-:::
+</Callout>
 
 ## Responsive Images
 
@@ -291,6 +293,6 @@ Trong ví dụ trên, nếu chiều rộng của thiết bị nhỏ hơn 600px t
 - Nếu kích thước màn hình nhỏ hơn 600px thì chọn mốc 300px, nếu kích thước màn hình lớn hơn 600px thì chọn mốc 600px
 - Hiển thị hình ảnh tương ứng với mốc đã chọn
 
-:::tip
+<Callout type="info">
 Tham khảo thêm tại [Responsive images](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
-:::
+</Callout>

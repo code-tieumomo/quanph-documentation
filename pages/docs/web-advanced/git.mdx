@@ -5,11 +5,13 @@ toc_max_heading_level: 6
 sidebar_position: 1
 ---
 
+import { Callout } from "nextra/components";
+
 # Git và Github
 
-:::danger
-**Chưa hoàn thiện 🚧**
-:::
+<Callout emoji="🚧">
+**Chưa hoàn thiện**
+</Callout>
 
 ## Git là gì
 
@@ -56,12 +58,10 @@ git config --global user.email "your_email@example.com"
 
 ## Các khái niệm cơ bản
 
-:::info
-
+<Callout icon="" type="info">
 - **Local**: là môi trường trên máy tính cá nhân.
 - **Remote**: là môi trường trên máy chủ git (**Github**).
-
-:::
+</Callout>
 
 1. **Repository (Kho mã nguồn)**: Kho mã nguồn là nơi lưu trữ toàn bộ lịch sử thay đổi của dự án. Kho mã nguồn có thể được lưu trữ trên máy chủ hoặc trên máy tính cá nhân.
 2. **Clone (Sao chép)**: Clone là một bản sao của kho mã nguồn. Khi bạn muốn làm việc với một dự án, bạn có thể clone dự án đó về máy tính của mình và làm việc với dự án đó.
@@ -115,9 +115,9 @@ Thực hiện lệnh `git commit -m "<message>"` để commit các file trong st
 git commit -m "<message>"
 ```
 
-:::info
+<Callout type="info">
 `<message>` là nội dung commit, thường là mô tả về sự thay đổi của các phần code trong commit, ví dụ: **git commit -m "Fix bug #123"**. Message thường ngắn gọn, không quá 50 ký tự, nên viết bằng tiếng Anh và không có dấu câu ở cuối.
-:::
+</Callout>
 
 > Tham khảo https://git-scm.com/docs/git-commit
 
@@ -129,9 +129,10 @@ Thực hiện lệnh `git push origin <branch>` để đẩy các commit từ lo
 git push origin <branch> # nên chỉ rõ branch
 ```
 
-:::warning Popup đăng nhập khi push lần đầu tiên
-Trên Windows khi push lần đâu tiên sẽ có cửa sổ đăng nhập hiện ra, bạn cần nhập username và password của Github để đăng nhập.
-:::
+<Callout type="warning">
+**Popup đăng nhập khi push lần đầu tiên**<br/>
+Trên Windows khi push lần đâu tiên sẽ có cửa sổ đăng nhập hiện ra, bạn cần nhập **username** và **password** của **Github** để đăng nhập.
+</Callout>
 
 > Tham khảo https://git-scm.com/docs/git-push
 
@@ -237,22 +238,22 @@ Bạn có thể clone một repo từ remote (Github) về local bằng cách th
 6.  Mở terminal và thực hiện lệnh `git clone <url>`.
 7.  Nhập username và password (thường chỉ có lần đầu tiên sau khi mới cài Git là phải nhập).
 
-:::info
+<Callout type="info">
 Các thao tác trên là thực hiện trên **Windows**, trên **MacOS** và **Linux** sẽ có một số khác biệt nhỏ (phần này nâng cao hơn, bàn sau).
-:::
+</Callout>
 
 ## Quy trình làm việc cơ bản
 
 ### Tạo repo
 
-:::info
+<Callout type="info">
 Phần này có 2 trường hợp:
 
 - Tạo repo trên Github và clone về local. **(cách này thường được sử dụng nhiều hơn khi bắt đầu làm từ đầu)**
 - Tạo repo trên local và đẩy lên Github. **(cách này thường được sử dụng khi đã có một dự án trên local và muốn đẩy lên Github)**
 
 Dù là trường hợp nào thì vẫn cần có repo trên remote và repo trên local sau đó tạo remote `origin` (bên dưới sẽ hướng dẫn cách tạo) để liên kết với nhau
-:::
+</Callout>
 
 #### Tạo repo mới trên Github và clone về local.
 
@@ -304,9 +305,9 @@ Bạn có thể thực hiện các bước sau để làm việc với một rep
     git push origin <branch>
     ```
 
-:::tip
+<Callout type="info">
 Trên đây là quy trình làm việc cơ bản trên 1 branch, nếu có nhiều branch thì sẽ cần có thêm các thao tác merge, rebase, pull request, ...
-:::
+</Callout>
 
 ## Github Desktop
 
@@ -366,6 +367,6 @@ Các thao tác trong Github Desktop đều thực hiện trên GUI rất rõ rà
 
 ### Terminal
 
-:::info
+<Callout type="info">
 Terminal ở đấy là để chỉ một môi trường dòng lệnh, ví dụ như **Command Prompt, Powershell** trên Windows, **Terminal** trên MacOS, Linux ...
-:::
+</Callout>

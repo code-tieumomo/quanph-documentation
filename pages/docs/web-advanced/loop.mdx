@@ -5,6 +5,8 @@ toc_max_heading_level: 6
 sidebar_position: 5
 ---
 
+import { Callout } from "nextra/components";
+
 # Loop
 
 ## Khái niệm
@@ -94,9 +96,9 @@ while (i <= 10) {
 }
 ```
 
-:::danger
+<Callout type="error">
 Nếu điều kiện của vòng lặp `while` luôn đúng, vòng lặp sẽ không bao giờ dừng lại và chương trình sẽ bị treo. Do đó trong phần code của vòng lặp while, ta phải đảm bảo điều kiện của vòng lặp sẽ trở thành sai tại một thời điểm nào đó. Trong ví dụ trên, ta đã tăng giá trị của biến `i` sau mỗi lần lặp để đảm bảo điều kiện `i <= 10` sẽ trở thành sai tại một thời điểm mà i bằng 11.
-:::
+</Callout>
 
 ## Vòng lặp `do...while`
 
@@ -156,12 +158,12 @@ for (let key in person) {
 }
 ```
 
-:::info
+<Callout type="info">
 
 - Trong ví dụ trên, ta có thể thay `key` bằng bất kỳ tên biến nào khác. Tên biến này sẽ được sử dụng để lưu tên của thuộc tính đang được duyệt.
 - `for...in` cũng có thể được sử dụng để duyệt qua các phần tử của một **array**.
 
-:::
+</Callout>
 
 ## Vòng lặp `for...of`
 
@@ -190,9 +192,9 @@ for (let number of numbers) {
 }
 ```
 
-:::info
+<Callout type="info">
 Nếu định nghĩa một cách chính xác thì `for...of` sẽ duyệt qua các phần tử của một **iterable** (Array, String, TypedArray, Map, Set, NodeList, ...) thay vì chỉ là một **array** nhưng trong thực tế, ta thường sử dụng `for...of` để duyệt qua các phần tử của một **array** và **NodeList** nhiều hơn.
 
 Tham khảo thêm về [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#iterable).
 Tham khảo thêm về [`for...of`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of).
-:::
+</Callout>

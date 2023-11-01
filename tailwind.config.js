@@ -9,16 +9,16 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
 
     // Config
-    "./theme.config.tsx",
+    "./theme.config.tsx"
   ],
   theme: {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)"],
         heading: ["var(--font-space-grotesk)"],
-        mono: ["var(--font-source-code-pro)"],
-      },
-    },
+        mono: ["var(--font-source-code-pro)"]
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

@@ -17,9 +17,11 @@ aside * {
   @apply font-heading;
 }
 
-pre * {
+pre *,
+[data-ch-theme] * {
   @apply font-mono;
   font-size: 0.875rem;
+  @apply font-semibold;
 }
 
 code {
@@ -31,12 +33,38 @@ a:focus-visible {
 }
 
 // Nextra
+article {
+  // p, li {
+  //   @apply text-sm;
+  // }
+
+  img {
+    @apply mx-auto w-full rounded object-cover;
+  }
+}
+
 .contains-task-list {
   @apply mt-4;
 }
 
 .nextra-bleed {
   @apply mx-auto;
+}
+
+.nextra-callout {
+  @apply items-center text-sm py-2;
+
+  div {
+    @apply space-y-0 #{!important};
+  }
+
+  ul > li {
+    @apply my-0;
+  }
+
+  p {
+    @apply leading-6;
+  }
 }
 
 .nx-text-primary {
@@ -59,4 +87,13 @@ a:focus-visible {
 
 .nx-bg-primary-100 {
   @apply bg-emerald-100;
+}
+
+// Codehike
+.ch-codeblock .ch-code-button {
+  display: none;
+}
+
+.ch-codeblock:hover .ch-code-button {
+  display: block;
 }
