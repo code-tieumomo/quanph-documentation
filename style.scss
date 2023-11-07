@@ -43,6 +43,10 @@ article {
   }
 }
 
+[tabindex]:not([tabindex="-1"]) {
+  @apply focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:shadow-none;
+}
+
 .contains-task-list {
   @apply mt-4;
 }
@@ -85,8 +89,26 @@ article {
   @apply text-emerald-600;
 }
 
+.nx-border-primary-500 {
+  @apply border-emerald-500;
+}
+
 .nx-bg-primary-100 {
   @apply bg-emerald-100;
+}
+
+.nextra-code-block {
+  & > pre {
+    @apply bg-[#2c313c]
+  }
+}
+
+code .line.highlighted {
+  @apply shadow-[#dddddd] bg-gray-700;
+}
+
+.nextra-copy-icon {
+  @apply text-gray-300;
 }
 
 // Codehike
@@ -96,4 +118,8 @@ article {
 
 .ch-codeblock:hover .ch-code-button {
   display: block;
+}
+
+[id^="headlessui-tabs-panel"] .ch-codegroup {
+  @apply mt-0;
 }

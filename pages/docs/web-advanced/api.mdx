@@ -211,9 +211,7 @@ CORS (Cross-Origin Resource Sharing) là một cơ chế cho phép các trang we
 
 Các hệ thống cung cấp Web API thường sẽ bật CORS để cho phép các trang web khác có thể tương tác với Web API của họ. Nhưng không phải tất cả các hệ thống đều bật CORS. Nếu một hệ thống không bật CORS thì khi request đến Web API của họ sẽ bị chặn bởi trình duyệt và trả về một lỗi `CORS policy`. Trên Console của trình duyệt sẽ hiển thị lỗi như sau:
 
-```txt
-Access to fetch at 'https://example.com/api/users' from origin 'https://example.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-```
+> Access to fetch at 'https://example.com/api/users' from origin 'https://example.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
 
 Để khắc phục lỗi này, ta có thể sử dụng một proxy để gửi request đến Web API. Một proxy là một trang web khác mà trang web của ta có thể gửi request đến. Proxy sẽ nhận request từ trang web của ta và gửi tiếp request này đến Web API. Sau đó, proxy sẽ nhận response từ Web API và gửi tiếp response này đến trang web của ta. Hoặc đơn giản hơn nếu chúng ta là chủ sở hữu của Web API thì ta có thể bật CORS cho Web API của mình.
 

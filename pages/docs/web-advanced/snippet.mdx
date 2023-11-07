@@ -5,12 +5,14 @@ toc_max_heading_level: 6
 sidebar_position: 9
 ---
 
-import { Callout } from "nextra/components";
+import { Callout, Tabs } from "nextra/components";
 
 # Code Snippet
 
 <Callout type="warning">
-Các ví dụ trong bài có thể chỉ có **HTML**, đôi khi là cả **TailwindCSS**, không có sẵn style và tùy từng snippet mà sẽ có thêm các thư viện hỗ trợ (sẽ được lưu ý).
+  Các ví dụ trong bài có thể chỉ có **HTML**, đôi khi là cả **TailwindCSS**,
+  không có sẵn style và tùy từng snippet mà sẽ có thêm các thư viện hỗ trợ (sẽ
+  được lưu ý).
 </Callout>
 
 ## Đăng nhập/Đăng ký
@@ -141,7 +143,8 @@ if (!isLogin) {
 ```
 
 <Callout type="info">
-Phần này nên được đặt trong 1 file riêng và thêm vào các trang cần kiểm tra đăng nhập thông qua thẻ `<script src="..."></script>`.
+  Phần này nên được đặt trong 1 file riêng và thêm vào các trang cần kiểm tra
+  đăng nhập thông qua thẻ `<script src="..."></script>`.
 </Callout>
 
 ### Lưu ý
@@ -176,6 +179,81 @@ if (!isLogin) {
 
 ## API + Render HTML
 
-<Callout type="error">
-Chưa hoàn thiện 🚧
-</Callout>
+> Render HTML với dữ liệu từ API [https://fakestoreapi.com/products](https://fakestoreapi.com/products) (danh sách 20 sản phẩm)
+
+**Chuẩn bị file HTML và JS**
+
+<Tabs items={['HTML', 'JS']}>
+  <Tabs.Tab>
+    ```html index.html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+    </head>
+    <body>
+      <div id="products">
+        <!-- Danh sách sản phẩm sẽ được render ở đây -->
+      </div>
+
+      <script src="app.js"></script>
+    </body>
+    </html>
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```js app.js
+    // Đường dẫn API
+    const apiEndpoint = "https://fakestoreapi.com/products";
+    // Element sẽ dùng để hiển thị danh sách sản phẩm
+    const productsContainer = document.getElementById("products"); 
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+**Lấy dữ liệu từ API**
+
+```js app.js {6-12}
+// Đường dẫn API
+const apiEndpoint = "https://fakestoreapi.com/products";
+// Element sẽ dùng để hiển thị danh sách sản phẩm
+const productsContainer = document.getElementById("products");
+
+// Lấy dữ liệu từ API
+fetch(apiEndpoint)
+  .then(response => response.json())
+  .then(data => {
+    // console.log(data);
+    // [{ id: 1, title: '...', price: 0, ... }, { id: 2, title: '...', price: 0, ... }, ... ]
+  });
+```
+
+**Render HTML**
+
+```js app.js {14-21}
+// Đường dẫn API
+const apiEndpoint = "https://fakestoreapi.com/products";
+// Element sẽ dùng để hiển thị danh sách sản phẩm
+const productsContainer = document.getElementById("products");
+
+// Lấy dữ liệu từ API
+fetch(apiEndpoint)
+  .then(response => response.json())
+  .then(data => {
+    // console.log(data);
+    // [{ id: 1, title: '...', price: 0, ... }, { id: 2, title: '...', price: 0, ... }, ... ]
+
+    // Render HTML
+    data.forEach(product => {
+      productsContainer.innerHTML += `
+        <div>
+          <h3>${product.title}</h3>
+          <p>${product.price}</p>
+        </div>
+      `;
+    });
+  });
+```
