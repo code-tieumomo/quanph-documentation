@@ -1,0 +1,108 @@
+---
+description: Tổng quan về ES6
+image: https://4.bp.blogspot.com/-oK1U8Mxh0do/VwKkWfHuhzI/AAAAAAAAS2M/nCj-Zc2r7XUmhdjn95pbhyjQ6ISXHYfww/s640/ecmascript6.png
+toc_max_heading_level: 6
+sidebar_position: 1
+---
+
+# ES6
+
+ES6 (ECMAScript 2015) là một phiên bản của ngôn ngữ lập trình JavaScript, được phát hành vào tháng 6 năm 2015. ES6 mang đến nhiều tính năng mới và cải tiến cho JavaScript, giúp lập trình viên viết mã dễ dàng hơn và hiệu quả hơn.
+Nó đã trở thành một tiêu chuẩn quan trọng trong phát triển web và được hỗ trợ bởi hầu hết các trình duyệt hiện đại.
+
+## Tính năng mới trong ES6
+
+Dưới đây là một số tính năng nổi bật của ES6:
+
+### Khai báo biến với `let` và `const`
+
+Trước ES6, JavaScript chỉ hỗ trợ khai báo biến với từ khóa `var`. Với ES6, bạn có thể sử dụng `let` để khai báo biến có phạm vi khối (block scope) và `const` để khai báo biến không thể thay đổi giá trị (constant).
+
+```javascript
+let x = 10;
+const y = 20;
+x = 15; // Hợp lệ
+y = 25; // Lỗi: không thể thay đổi giá trị của biến hằng
+```
+
+- `let`: Khai báo biến có phạm vi khối (block scope).
+    
+    > `block scope` là phạm vi mà biến chỉ có thể được truy cập trong một khối mã cụ thể, chẳng hạn như trong một hàm hoặc trong một khối điều kiện hoặc trong 1 cặp dấu ngoặc nhọn `{}`.
+
+    ```javascript
+    if (true) {
+        let x = 10;
+        console.log(x); // In ra 10
+    }
+    console.log(x); // Lỗi: x không được định nghĩa
+    ```
+
+- `const`: Khai báo biến không thể thay đổi giá trị (constant).
+    
+    > Biến được khai báo bằng `const` không thể được gán lại giá trị mới sau khi đã được khởi tạo. Tuy nhiên, nếu biến là một đối tượng hoặc mảng, bạn vẫn có thể thay đổi các thuộc tính hoặc phần tử bên trong nó.
+
+    ```javascript
+    const PI = 3.14;
+    console.log(PI); // In ra 3.14
+
+    PI = 3.14159; // Lỗi: không thể thay đổi giá trị của biến hằng
+    ```
+
+    ```javascript
+    const arr = [1, 2, 3];
+    arr.push(4); // Hợp lệ: thêm phần tử vào mảng
+    console.log(arr); // In ra [1, 2, 3, 4]
+    arr = [5, 6, 7]; // Lỗi: không thể thay đổi giá trị của biến hằng
+    ```
+
+Lợi ích chính:
+
+- Giúp tránh xung đột tên biến trong phạm vi toàn cục (global scope).
+- Giúp dễ dàng quản lý và bảo trì mã nguồn.
+
+### Arrow Functions
+
+Arrow functions là một cách viết hàm ngắn gọn hơn trong ES6. Chúng giúp giảm bớt cú pháp và làm cho mã dễ đọc hơn.
+
+**Cú pháp:**
+
+```javascript
+const functionName = (parameters) => {
+    // Thân hàm
+};
+```
+
+**Ví dụ:**
+
+```javascript
+const add = (a, b) => a + b;
+console.log(add(2, 3)); // In ra 5
+```
+```javascript
+const square = x => x * x; // Nếu chỉ có một tham số, có thể bỏ qua dấu ngoặc đơn
+console.log(square(5)); // In ra 25
+```
+```javascript
+const greet = (name) => {
+    return `Hello, ${name}!`;
+};
+console.log(greet('John')); // In ra Hello, John!
+```
+
+Lợi ích chính:
+- Giúp viết hàm ngắn gọn hơn.
+- Tự động ràng buộc `this` trong hàm, giúp tránh các vấn đề liên quan đến ngữ cảnh (context) khi sử dụng hàm.
+    ```javascript
+    const obj = {
+        name: 'John',
+        greet: function() {
+            setTimeout(() => {
+                // Sử dụng arrow function để giữ context của `this`
+                console.log(`Hello, ${this.name}!`);
+            }, 1000);
+        }
+    };
+    obj.greet(); // In ra Hello, John! sau 1 giây
+    ```
+
+### Template Literals
