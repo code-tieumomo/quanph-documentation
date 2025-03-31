@@ -63,8 +63,9 @@ const config: DocsThemeConfig = {
       }
       return <>{title}</>;
     },
-    defaultMenuCollapseLevel: 2,
-    toggleButton: true
+    defaultMenuCollapseLevel: 1,
+    toggleButton: true,
+    autoCollapse: true,
   },
   footer: {
     text: (

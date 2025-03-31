@@ -43,6 +43,10 @@ article {
   }
 }
 
+iframe {
+  @apply min-h-[600px] mt-8 border rounded-xl border-gray-300;
+}
+
 [tabindex]:not([tabindex="-1"]) {
   @apply focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:shadow-none;
 }
@@ -122,4 +126,12 @@ code .line.highlighted {
 
 [id^="headlessui-tabs-panel"] .ch-codegroup {
   @apply mt-0;
+}
+
+.nextra-code-block > div:first-child {
+  @apply text-white font-semibold;
+}
+
+code .line .highlighted {
+  @apply bg-gray-600;
 }
