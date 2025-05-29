@@ -1,0 +1,182 @@
+---
+description: Giỏ hàng
+image: https://img.freepik.com/free-vector/happy-tiny-man-woman-with-shopping-bags-huge-gift-boxes_778687-1341.jpg?ga=GA1.1.984609672.1742786693&semt=ais_items_boosted&w=740
+toc_max_heading_level: 6
+sidebar_position: 4
+---
+
+import { Callout } from "nextra/components";
+
+# Giỏ hàng
+
+## Xây dựng chức năng giỏ hàng với HTML, CSS, và JavaScript
+
+Chức năng giỏ hàng là một phần không thể thiếu trong các website thương mại điện tử. Dưới đây là hướng dẫn chi tiết từng bước để xây dựng một giỏ hàng đơn giản, lưu dữ liệu trên `localStorage` và thao tác hoàn toàn bằng HTML, CSS, JavaScript thuần.
+
+---
+
+### 1. Giao diện sản phẩm và giỏ hàng
+
+```html
+<!-- Danh sách sản phẩm sẽ được render tự động bằng JavaScript -->
+<div class="products" id="products-list"></div>
+
+<!-- Giỏ hàng -->
+<h2>Giỏ hàng</h2>
+<table id="cart-table">
+  <thead>
+    <tr>
+      <th>Tên sản phẩm</th>
+      <th>Giá</th>
+      <th>Số lượng</th>
+      <th>Thành tiền</th>
+      <th>Xóa</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<p><strong>Tổng tiền: <span id="cart-total">0</span> đ</strong></p>
+<button onclick="clearCart()">Xóa toàn bộ giỏ hàng</button>
+```
+
+---
+
+### 2. CSS cơ bản cho giao diện
+
+```css
+.products { display: flex; gap: 20px; }
+.product { border: 1px solid #ccc; padding: 10px; width: 200px; }
+#cart-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+#cart-table th, #cart-table td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+```
+
+---
+
+### 3. JavaScript: Xử lý giỏ hàng, sản phẩm và lưu localStorage
+
+```js
+// Danh sách sản phẩm mẫu
+const sampleProducts = [
+  { id: 1, name: 'Sản phẩm A', price: 100000 },
+  { id: 2, name: 'Sản phẩm B', price: 200000 },
+  { id: 3, name: 'Sản phẩm C', price: 150000 }
+];
+
+// Lưu sản phẩm mẫu vào localStorage nếu chưa có
+if (!localStorage.getItem('products')) {
+  localStorage.setItem('products', JSON.stringify(sampleProducts));
+}
+
+function getProducts() {
+  return JSON.parse(localStorage.getItem('products') || '[]');
+}
+
+function renderProducts() {
+  const products = getProducts();
+  const container = document.getElementById('products-list');
+  container.innerHTML = '';
+  products.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'product';
+    div.innerHTML = `
+      <h3>${p.name}</h3>
+      <p>Giá: ${p.price.toLocaleString()}đ</p>
+      <button onclick="addToCart(${p.id}, '${p.name}', ${p.price})">Thêm vào giỏ</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+// Lấy giỏ hàng từ localStorage hoặc khởi tạo mới
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+
+function saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function addToCart(id, name, price) {
+  let cart = getCart();
+  let found = cart.find(item => item.id === id);
+  if (found) {
+    found.qty += 1;
+  } else {
+    cart.push({ id, name, price, qty: 1 });
+  }
+  saveCart(cart);
+  renderCart();
+}
+
+function updateQty(id, qty) {
+  let cart = getCart();
+  let item = cart.find(i => i.id === id);
+  if (item) {
+    item.qty = qty > 0 ? qty : 1;
+  }
+  saveCart(cart);
+  renderCart();
+}
+
+function removeFromCart(id) {
+  let cart = getCart().filter(item => item.id !== id);
+  saveCart(cart);
+  renderCart();
+}
+
+function clearCart() {
+  localStorage.removeItem('cart');
+  renderCart();
+}
+
+function renderCart() {
+  let cart = getCart();
+  let tbody = document.querySelector('#cart-table tbody');
+  tbody.innerHTML = '';
+  let total = 0;
+  cart.forEach(item => {
+    let row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.price.toLocaleString()} đ</td>
+      <td><input type="number" min="1" value="${item.qty}" onchange="updateQty(${item.id}, this.value)"></td>
+      <td>${(item.price * item.qty).toLocaleString()} đ</td>
+      <td><button onclick="removeFromCart(${item.id})">Xóa</button></td>
+    `;
+    tbody.appendChild(row);
+    total += item.price * item.qty;
+  });
+  document.getElementById('cart-total').textContent = total.toLocaleString();
+}
+
+// Khởi tạo hiển thị sản phẩm và giỏ hàng khi tải trang
+window.onload = function() {
+  renderProducts();
+  renderCart();
+};
+```
+
+---
+
+### 4. Giải thích chi tiết
+
+- **Lưu dữ liệu:** Giỏ hàng được lưu vào `localStorage` dưới dạng JSON, đảm bảo dữ liệu không bị mất khi tải lại trang.
+- **Thêm sản phẩm:** Khi nhấn "Thêm vào giỏ", hàm `addToCart` sẽ kiểm tra sản phẩm đã có trong giỏ chưa, nếu có thì tăng số lượng, nếu chưa thì thêm mới.
+- **Chỉnh sửa số lượng:** Người dùng có thể chỉnh sửa số lượng trực tiếp trên bảng giỏ hàng, hàm `updateQty` sẽ cập nhật lại localStorage và giao diện.
+- **Tính tổng tiền:** Hàm `renderCart` sẽ tính tổng tiền dựa trên từng sản phẩm và cập nhật lên giao diện.
+- **Xóa sản phẩm/Làm rỗng giỏ:** Có thể xóa từng sản phẩm hoặc toàn bộ giỏ hàng.
+
+---
+
+### 5. Mở rộng thêm
+- Có thể thêm xác nhận khi xóa sản phẩm hoặc làm rỗng giỏ hàng.
+- Có thể lưu thêm thông tin sản phẩm (ảnh, mô tả, ...).
+- Có thể tách phần JavaScript ra file riêng để dễ bảo trì.
+
+---
+
+> **Lưu ý:** Đây là ví dụ đơn giản, phù hợp cho mục đích học tập hoặc demo. Khi triển khai thực tế cần kiểm tra bảo mật, xác thực dữ liệu, và xử lý các trường hợp đặc biệt.
+
+---
+
+Bạn có thể copy toàn bộ đoạn code trên vào một file HTML để thử nghiệm ngay trên trình duyệt.
