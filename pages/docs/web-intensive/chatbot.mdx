@@ -1,0 +1,104 @@
+---
+description: Chatbot
+image: https://www.gstatic.com/lamda/images/gemini_thumbnail_v2_55a4e3be7b83404a620e5.jpg
+toc_max_heading_level: 6
+sidebar_position: 2
+---
+
+import { Callout } from "nextra/components";
+
+# Xây dựng Chatbot đơn giản với Gemini
+
+<Callout type="info">Bài viết này hướng dẫn bạn xây dựng một chatbot đơn giản sử dụng Gemini API, chỉ với HTML, CSS và JavaScript thuần (Vanilla JS) chạy trực tiếp trên trình duyệt.</Callout>
+
+## 1. Gemini API là gì?
+Gemini là một mô hình trí tuệ nhân tạo của Google, cho phép bạn tạo các ứng dụng hội thoại thông minh như chatbot.
+
+## 2. Chuẩn bị
+- Gemini API Key (https://aistudio.google.com/app/apikey)
+
+## 3. Tạo giao diện chatbot
+Tạo một file `index.html` với nội dung sau:
+
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot Gemini Đơn Giản</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; }
+    .chatbox { max-width: 400px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 16px; }
+    .messages { min-height: 200px; margin-bottom: 12px; }
+    .msg { margin: 8px 0; }
+    .user { color: #1976d2; font-weight: bold; }
+    .bot { color: #388e3c; }
+    input, button { padding: 8px; font-size: 1em; }
+    input { width: 70%; }
+    button { width: 25%; background: #1976d2; color: #fff; border: none; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="chatbox">
+    <div class="messages" id="messages"></div>
+    <input id="userInput" placeholder="Nhập câu hỏi..." />
+    <button onclick="sendMessage()">Gửi</button>
+  </div>
+  <script src="chatbot.js"></script>
+</body>
+</html>
+```
+
+## 4. Tạo file JavaScript gọi Gemini API
+Tạo file `chatbot.js` với nội dung sau:
+
+```js
+const API_KEY = 'YOUR_GEMINI_API_KEY'; // Thay bằng API Key của bạn
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+
+async function askGemini(message) {
+  const res = await fetch(GEMINI_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ contents: [{ parts: [{ text: message }] }] })
+  });
+  const data = await res.json();
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || 'Không có phản hồi.';
+}
+
+function addMessage(text, sender) {
+  const messages = document.getElementById('messages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + sender;
+  div.innerHTML = `<span class="${sender}">${sender === 'user' ? 'Bạn' : 'Gemini'}:</span> ${text}`;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+window.sendMessage = async function() {
+  const input = document.getElementById('userInput');
+  const text = input.value.trim();
+  if (!text) return;
+  addMessage(text, 'user');
+  input.value = '';
+  addMessage('Đang trả lời...', 'bot');
+  const reply = await askGemini(text);
+  document.querySelector('div.bot:last-child').innerHTML = `<span class="bot">Gemini:</span> ${reply}`;
+}
+```
+
+### Giải thích code:
+- Giao diện đơn giản với HTML/CSS, có vùng chat và ô nhập.
+- Hàm `askGemini` gửi câu hỏi tới Gemini API và nhận phản hồi.
+- Hàm `addMessage` hiển thị tin nhắn lên khung chat.
+- Khi nhấn nút Gửi, chatbot sẽ gửi câu hỏi và hiển thị câu trả lời từ Gemini.
+
+## 5. Chạy thử chatbot
+1. Đổi `YOUR_GEMINI_API_KEY` thành API Key thật của bạn.
+2. Mở file `index.html` trên trình duyệt.
+3. Nhập câu hỏi và trò chuyện với Gemini!
+
+## 6. Lưu ý
+- Không chia sẻ API Key công khai.
+- API miễn phí có giới hạn số lượt dùng.
+- Nếu gặp lỗi CORS, bạn cần triển khai backend proxy hoặc dùng giải pháp server trung gian.
